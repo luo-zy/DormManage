@@ -37,10 +37,8 @@
 		<!-- 配置实体类 -->
 		<property name="annotatedClasses">
 			<list>
-				<value>com.mcx.model.Student</value>
-				<value>com.mcx.model.Admin</value>
-				<value>com.mcx.model.DormManager</value>
-				<value>com.mcx.model.DormBuild</value>
+				<value>com.mcx.model.User</value>
+				<value>com.mcx.model.Dorm</value>
 				<value>com.mcx.model.Record</value>
 			</list>
 		</property>

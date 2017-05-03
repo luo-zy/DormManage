@@ -24,53 +24,13 @@ public class Record implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int recordId;// 记录ID
-	@Column
-	private Student student;// 对应学生
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	private User student;// 对应学生
 	@Column
 	private String date;// 记录时间
 	@Column
 	private String detail;// 记录详情
-	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE})
-	private DormManager dormManager;// 对应宿管
-
-	public int getRecordId() {
-		return recordId;
-	}
-
-	public void setRecordId(int recordId) {
-		this.recordId = recordId;
-	}
-
-	public Student getStudent() {
-		return student;
-	}
-
-	public void setStudent(Student student) {
-		this.student = student;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-	public String getDetail() {
-		return detail;
-	}
-
-	public void setDetail(String detail) {
-		this.detail = detail;
-	}
-
-	public DormManager getDormManager() {
-		return dormManager;
-	}
-
-	public void setDormManager(DormManager dormManager) {
-		this.dormManager = dormManager;
-	}
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	private User manager;// 对应宿管
 
 }

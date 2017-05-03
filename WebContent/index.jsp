@@ -8,6 +8,6 @@
 <title>首页</title>
 </head>
 <body>
-<h3><a href="<%=path%>studentList.action">查询用户</a></h3>
+<h3><a href="<%=path%>user/toLogin.action">登录</a></h3>
 </body>
 </html>
