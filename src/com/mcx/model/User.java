@@ -1,10 +1,9 @@
 package com.mcx.model;
 
-import java.io.Serializable;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,38 +12,43 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user")
-public class User implements Serializable {
-	private static final long serialVersionUID = -5761173609088238030L;
+public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int userId;// 用户ID
+	private Integer id;// 用户ID
 	@Column
 	private String username;// 用户名
 	@Column
 	private String password;// 密码
 	@Column
-	private String number;// 工号、学号
-	@Column
 	private String name;// 姓名
 	@Column
 	private String sex;// 性别
 	@Column
-	private String age;// 年龄
+	private Integer age;// 年龄
+	@Column
+	private String address;// 家庭住址
 	@Column
 	private String tel;// 电话
-
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	private Dorm dorm;
-
 	@Column
 	private String role;// 用户角色
 
-	public int getUserId() {
-		return userId;
+	// --------------学生信息
+	@Column
+	private String stuNumber;// 学号
+	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST,	CascadeType.MERGE })
+	private Dorm dorm;// 学生对应宿舍
+
+	// --------------宿舍管理员信息
+	@Column
+	private String manNumber;// 工号
+
+	public Integer getId() {
+		return id;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getUsername() {
@@ -63,14 +67,6 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public String getNumber() {
-		return number;
-	}
-
-	public void setNumber(String number) {
-		this.number = number;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -87,11 +83,11 @@ public class User implements Serializable {
 		this.sex = sex;
 	}
 
-	public String getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
-	public void setAge(String age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 
@@ -103,12 +99,12 @@ public class User implements Serializable {
 		this.tel = tel;
 	}
 
-	public Dorm getDorm() {
-		return dorm;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setDorm(Dorm dorm) {
-		this.dorm = dorm;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getRole() {
@@ -117,6 +113,30 @@ public class User implements Serializable {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public String getStuNumber() {
+		return stuNumber;
+	}
+
+	public void setStuNumber(String stuNumber) {
+		this.stuNumber = stuNumber;
+	}
+
+	public Dorm getDorm() {
+		return dorm;
+	}
+
+	public void setDorm(Dorm dorm) {
+		this.dorm = dorm;
+	}
+
+	public String getManNumber() {
+		return manNumber;
+	}
+
+	public void setManNumber(String manNumber) {
+		this.manNumber = manNumber;
 	}
 
 }

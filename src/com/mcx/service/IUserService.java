@@ -2,20 +2,22 @@ package com.mcx.service;
 
 import java.util.List;
 
+import org.hibernate.criterion.DetachedCriteria;
+
 import com.mcx.model.User;
 
 public interface IUserService {
-	
-	public User login(String username,String password);
 
-	public User getUser(int userId);
+	public User getUser(Integer userId);
 	
-	public List<User> getAllUser();
+	public User findEntityByCriteria(DetachedCriteria dc);
 	
-	public void addUser(User user);
+	public List<User> findByCriteria(DetachedCriteria dc);
 	
-	public boolean delUser(String id);
+	public String save(User user);
 	
-	public boolean updateUser(User user);
-
+	public String update(User user);
+	
+	public String delete(Integer userId);
+	
 }

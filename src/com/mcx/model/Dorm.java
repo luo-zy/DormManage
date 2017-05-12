@@ -1,12 +1,12 @@
 package com.mcx.model;
 
-import java.io.Serializable;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -16,22 +16,31 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "dorm")
-public class Dorm implements Serializable {
-	private static final long serialVersionUID = 4730668496392266323L;
+public class Dorm {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int dormId;// 宿舍ID
+	private Integer id;// 宿舍ID
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	private Floor floor;// 楼栋
 	@Column
 	private String dormName;// 宿舍名称
 	@Column
 	private String detail;// 宿舍介绍
 
-	public int getDormId() {
-		return dormId;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setDormId(int dormId) {
-		this.dormId = dormId;
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Floor getFloor() {
+		return floor;
+	}
+
+	public void setFloor(Floor floor) {
+		this.floor = floor;
 	}
 
 	public String getDormName() {
