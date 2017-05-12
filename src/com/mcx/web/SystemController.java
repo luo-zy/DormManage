@@ -80,23 +80,23 @@ public class SystemController extends BaseAction {
 		String message = "";
 		if (users.size() > 0) {
 			for (User user : users) {
-				if(user.getPassword().equals(password)){
-					if(user.getRole().equals(role)){
+				if (user.getRole().equals(role)) {
+					if (user.getPassword().equals(password)) {
 						session.setAttribute("currentUserRole", user.getRole());
 						session.setAttribute("currentUser", user);
 						reg = true;
 					} else {
-						message = "角色不正确！";
+						message = "密码错误！";
 					}
 				} else {
-					message = "密码错误！";
+					message = "角色不正确！";
 				}
 				break;
 			}
 		} else {
 			message = "用户名不存在！";
 		}
-		if(reg){
+		if (reg) {
 			return index(model, null);
 		} else {
 			model.addAttribute("message", message);
@@ -126,10 +126,11 @@ public class SystemController extends BaseAction {
 	}
 
 	@RequestMapping("/passwordUpdate")
-	public String passwordUpdate(Model model, Integer id,String oldPassword, String newPassword) {
+	public String passwordUpdate(Model model, Integer id, String oldPassword,
+			String newPassword) {
 		User user = getCurrentUser();
 		String message = "";
-		if(user.getPassword().trim().equals(oldPassword)){
+		if (user.getPassword().trim().equals(oldPassword)) {
 			user.setPassword(newPassword);
 			userService.update(user);
 			message = "密码修改成功！";
