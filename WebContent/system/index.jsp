@@ -80,7 +80,7 @@ function logout(){
 <body>
 <div class="container-fluid" style="padding-right: 0px;padding-left: 0px;">
 	<div region="north" style="height: 100px;background-image: url('<%=path%>/style/images/bg.jpg')">
-		<div align="left" style="width: 75%;height:100px ;float: left;padding-top: 40px;padding-left: 30px;" ><font color="white" size="6" >学生公寓管理系统</font></div>
+		<div align="left" style="width: 75%;height:100px ;float: left;padding-top: 40px;padding-left: 30px;" ><font color="#0088cc" size="6" >学生公寓管理系统</font></div>
 		<div style="padding-top: 70px;padding-right: 20px;">当前用户：&nbsp;<font color="red" size="5px">${currentUser.name }</font>&nbsp;&nbsp;&nbsp;
 		<button class="btn btn-mini btn-info" type="button" onclick="javascript:window.location='<%=path%>toPasswordUpdate.action'">修改密码</button>
 		<button class="btn btn-mini btn-info" type="button" onclick="logout();">退出系统</button>

@@ -95,7 +95,7 @@ function toLogin(){
         <label style="text-align: center;">
 	        <button class="btn btn-large btn-primary" type="button" onclick="toLogin();">登录</button>
 	        &nbsp;&nbsp;&nbsp;&nbsp;
-	        <button class="btn btn-large btn-primary" type="button" >重置</button>
+	        <button class="btn btn-large btn-primary" type="reset" >重置</button>
         </label>
       </form>
 </div>
